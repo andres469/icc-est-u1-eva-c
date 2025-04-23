@@ -1,6 +1,10 @@
+import Models.Book;
+import ViewConsole.ViewConsole;
+import Controller.ControllerBook;
 public class App {
     public static void main(String[] args) throws Exception {
-
+        ViewConsole vC=new ViewConsole();
+        ControllerBook cB=new ControllerBook();
         Book[] books = {
                 new Book("Clean Code", 2008),
                 new Book("The Pragmatic Programmer", 1999),
@@ -33,6 +37,13 @@ public class App {
                 new Book("Deep Learning", 2016),
                 new Book("The Elements of Statistical Learning", 2001)
         };
+        cB.sortByName(books);
+        Book aux= cB.searchByName(books, "Python Crash Course");
+        if (aux==null) {
+            vC.printMessage("persona no encontrada");
+        }else{
+            vC.printMessage("persona encontrada "+ aux);
+        }
 
     }
 }
